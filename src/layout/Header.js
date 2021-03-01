@@ -24,10 +24,10 @@ const Header = () => {
   };
 
   return (
-    <Navbar color="info" light expand="md">
+    <Navbar color="dark" light expand="md">
       <NavbarBrand>
-        <Link to="/" className="text-white">
-          Aditya's Git Fire App
+        <Link to="/" className="text-white text-center">
+          Github Fetch Api and Firebase Auth
         </Link>
       </NavbarBrand>
       <NavbarText className="text-white">

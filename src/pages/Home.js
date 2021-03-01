@@ -41,7 +41,7 @@ const Home = () => {
   //PUT ANY PAGE BEHIND LOGIN
 
   if (!context.user?.uid) {
-    return <Redirect to="/signin" />;
+    return <Redirect to="/signup" />;
   }
 
   return (

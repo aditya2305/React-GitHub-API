@@ -1,4 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import {
   Container,
   Form,
@@ -35,7 +37,7 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.log(error);
-        toast("Fuck outta here", {
+        toast("Profile not found please signup", {
           type: "error",
         });
       });
@@ -45,12 +47,25 @@ const SignUp = () => {
     e.preventDefault();
     handleSignIn();
   };
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   if (context.user?.uid) {
     return <Redirect to="/" />;
   }
   return (
-    <Container className="text-center">
+    <Container
+      data-aos="zoom-in"
+      data-aos-offset="200"
+      data-aos-delay="50"
+      data-aos-duration="500"
+      data-aos-easing="ease-in-out"
+      data-aos-mirror="true"
+      data-aos-once="false"
+      data-aos-anchor-placement="top-center"
+      className="text-center"
+    >
       <Row>
         <Col lg={6} className="offset-lg-3 mt-5">
           <Card>
@@ -66,7 +81,7 @@ const SignUp = () => {
                       type="email"
                       name="email"
                       id="email"
-                      placeholder="provide your email"
+                      placeholder="Enter here"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -81,7 +96,7 @@ const SignUp = () => {
                       type="password"
                       name="password"
                       id="password"
-                      placeholder="your password here"
+                      placeholder="Enter here"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
